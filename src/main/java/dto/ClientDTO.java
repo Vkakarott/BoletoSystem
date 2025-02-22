@@ -13,8 +13,8 @@ public class ClientDTO {
     private String name;
     private String email;
     private String password;
-    private Number cpf;
-    private Number phone;
+    private String cpf;
+    private String phone;
 
     public ClientDTO(Client client) {
         this.id = client.getId();

@@ -1,26 +1,34 @@
 package service;
 
-import org.springframework.http.*;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Mono;
 
 @Service
 public class ClienteSupabaseService {
-    private static final String SUPABASE_URL = "https://darygudwxbxnprrlnxtz.supabase.co";
-    private static final String API_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRhcnlndWR3eGJ4bnBycmxueHR6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDAxNDUwOTAsImV4cCI6MjA1NTcyMTA5MH0.qmN4GWo2XNtE_4PeXd_qEanPObH-imXigjjNm9Wjha8";
 
-    public String listarClientes() {
-        RestTemplate restTemplate = new RestTemplate();
-        HttpHeaders headers = new HttpHeaders();
-        headers.set("apikey", API_KEY);
-        headers.set("Authorization", "Bearer " + API_KEY);
-        headers.setContentType(MediaType.APPLICATION_JSON);
+    @Value("${supabase.url}")
+    private String supabaseUrl;
 
-        HttpEntity<String> entity = new HttpEntity<>(headers);
-        ResponseEntity<String> response = restTemplate.exchange(
-                SUPABASE_URL + "/clientes", HttpMethod.GET, entity, String.class);
+    @Value("${supabase.apikey}")
+    private String apiKey;
 
-        return response.getBody();
+    private final WebClient webClient;
+
+    public ClienteSupabaseService(WebClient.Builder webClientBuilder) {
+        this.webClient = webClientBuilder.baseUrl(supabaseUrl).build();
+    }
+
+    public Mono<String> listarClientes() {
+        return webClient.get()
+                .uri("/clientes")
+                .header("apikey", apiKey) 
+                .header("Authorization", "Bearer " + apiKey) 
+                .retrieve()
+                .onStatus(status -> status.isError(), response -> {
+                    return Mono.error(new RuntimeException("Erro ao acessar clientes"));
+                })
+                .bodyToMono(String.class);  
     }
 }
-
