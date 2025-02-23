@@ -1,10 +1,11 @@
-package dto;
+package com.controlticket.demo.dto;
 
-import model.Ticket;
-import model.TicketStatus;
 import lombok.*;
 
 import java.time.LocalDate;
+
+import com.controlticket.demo.model.Ticket;
+import com.controlticket.demo.model.TicketStatus;
 
 @Getter
 @Setter

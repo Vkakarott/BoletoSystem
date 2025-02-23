@@ -1,8 +1,9 @@
-package repository;
+package com.controlticket.demo.repository;
 
-import model.Client;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
+import com.controlticket.demo.model.Client;
 
 import java.util.List;
 import java.util.Optional;
@@ -12,5 +13,5 @@ public interface ClientRepository extends JpaRepository<Client, Long> {
     
     Optional<Client> findByEmail(String email);
     
-    List<Client> findByLastName(String lastName);
+    List<Client> findByName(String name);
 }

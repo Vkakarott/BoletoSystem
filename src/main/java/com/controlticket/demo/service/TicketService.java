@@ -1,10 +1,11 @@
-package service;
+package com.controlticket.demo.service;
 
-import dto.TicketDTO;
-import model.Ticket;
-import repository.TicketRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.controlticket.demo.dto.TicketDTO;
+import com.controlticket.demo.model.Ticket;
+import com.controlticket.demo.repository.TicketRepository;
 
 import java.util.List;
 import java.util.stream.Collectors;

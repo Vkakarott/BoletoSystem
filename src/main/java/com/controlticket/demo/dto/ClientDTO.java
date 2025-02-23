@@ -1,6 +1,7 @@
-package dto;
+package com.controlticket.demo.dto;
 
-import model.Client;
+import com.controlticket.demo.model.Client;
+
 import lombok.*;
 
 @Getter

@@ -1,14 +1,15 @@
-package controller;
+package com.controlticket.demo.controller;
 
-import model.Client;
-import repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import dto.ClientDTO;
+import com.controlticket.demo.dto.ClientDTO;
+import com.controlticket.demo.model.Client;
+import com.controlticket.demo.repository.ClientRepository;
+
+import jakarta.validation.Valid;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -17,8 +18,17 @@ import java.util.stream.Collectors;
 @RequestMapping("/clients")
 public class ClientController {
     
+    private final ClientRepository clientRepository;
+
     @Autowired
-    private ClientRepository clientRepository;
+    public ClientController(ClientRepository clientRepository) {
+        this.clientRepository = clientRepository;
+    }
+
+    @GetMapping("/test")
+    public String test() {
+        return "Test";
+    }
 
     @GetMapping
     public List<ClientDTO> listClients() {
@@ -26,7 +36,7 @@ public class ClientController {
     }
 
     @PostMapping
-    public ResponseEntity<ClientDTO> createClient(@RequestBody @Validated Client client) {
+    public ResponseEntity<ClientDTO> createClient(@RequestBody @Valid Client client) {
         Client savedClient = clientRepository.save(client);
         ClientDTO clientDTO = new ClientDTO(savedClient);
         return new ResponseEntity<>(clientDTO, HttpStatus.CREATED);

@@ -1,4 +1,4 @@
-package model;
+package com.controlticket.demo.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -8,7 +8,7 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 
-import dto.TicketDTO;
+import com.controlticket.demo.dto.TicketDTO;
 
 @Entity
 @Table(name = "tickets")
