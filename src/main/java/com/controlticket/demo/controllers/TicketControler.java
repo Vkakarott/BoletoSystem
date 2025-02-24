@@ -1,10 +1,10 @@
-package com.controlticket.demo.controller;
+package com.controlticket.demo.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import com.controlticket.demo.dto.TicketDTO;
-import com.controlticket.demo.service.TicketService;
+import com.controlticket.demo.dtos.TicketDTO;
+import com.controlticket.demo.services.TicketService;
 
 import java.util.List;
 

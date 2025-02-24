@@ -1,6 +1,7 @@
-package com.controlticket.demo.dto;
+package com.controlticket.demo.dtos;
 
-import com.controlticket.demo.model.Client;
+import com.controlticket.demo.enums.DocumentType;
+import com.controlticket.demo.models.Client;
 
 import lombok.*;
 
@@ -14,7 +15,8 @@ public class ClientDTO {
     private String name;
     private String email;
     private String password;
-    private String cpf;
+    private DocumentType documentType;
+    private String document;
     private String phone;
 
     public ClientDTO(Client client) {
@@ -22,7 +24,8 @@ public class ClientDTO {
         this.name = client.getName();
         this.email = client.getEmail();
         this.password = client.getPassword();
-        this.cpf = client.getCpf();
+        this.documentType = client.getDocumentType();
+        this.document = client.getDocument();
         this.phone = client.getPhone();
     }
 }

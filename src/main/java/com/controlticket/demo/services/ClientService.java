@@ -1,11 +1,11 @@
-package com.controlticket.demo.service;
+package com.controlticket.demo.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.controlticket.demo.dto.ClientDTO;
-import com.controlticket.demo.model.Client;
-import com.controlticket.demo.repository.ClientRepository;
+import com.controlticket.demo.dtos.ClientDTO;
+import com.controlticket.demo.models.Client;
+import com.controlticket.demo.repositories.ClientRepository;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -31,7 +31,8 @@ public class ClientService {
         client.setName(clientDTO.getName());
         client.setEmail(clientDTO.getEmail());
         client.setPassword(clientDTO.getPassword());
-        client.setCpf(clientDTO.getCpf());
+        client.setDocumentType(clientDTO.getDocumentType());
+        client.setDocument(clientDTO.getDocument());;
         client.setPhone(clientDTO.getPhone());
 
         Client savedClient = clientRepository.save(client);

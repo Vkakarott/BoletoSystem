@@ -1,9 +1,13 @@
-package com.controlticket.demo.model;
+package com.controlticket.demo.models;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
@@ -14,6 +18,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
+import com.controlticket.demo.enums.DocumentType;
 
 @Entity
 @Table(name = "clients")
@@ -39,9 +46,15 @@ public class Client {
     @Size(min = 6)
     private String password;
 
+    @Enumerated(EnumType.STRING)
+    private DocumentType documentType;
+
     @NotNull
-    private String cpf;
+    private String document;
 
     @NotNull
     private String phone;
+
+    @ManyToMany(mappedBy = "payMaster", cascade = CascadeType.ALL)
+    private List<Ticket> tickets;
 }

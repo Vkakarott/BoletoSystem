@@ -1,13 +1,13 @@
-package com.controlticket.demo.controller;
+package com.controlticket.demo.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.controlticket.demo.dto.ClientDTO;
-import com.controlticket.demo.model.Client;
-import com.controlticket.demo.repository.ClientRepository;
+import com.controlticket.demo.dtos.ClientDTO;
+import com.controlticket.demo.models.Client;
+import com.controlticket.demo.repositories.ClientRepository;
 
 import jakarta.validation.Valid;
 
@@ -23,11 +23,6 @@ public class ClientController {
     @Autowired
     public ClientController(ClientRepository clientRepository) {
         this.clientRepository = clientRepository;
-    }
-
-    @GetMapping("/test")
-    public String test() {
-        return "Test";
     }
 
     @GetMapping

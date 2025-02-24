@@ -1,4 +1,4 @@
-package com.controlticket.demo.model;
+package com.controlticket.demo.models;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -8,7 +8,8 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 
-import com.controlticket.demo.dto.TicketDTO;
+import com.controlticket.demo.dtos.TicketDTO;
+import com.controlticket.demo.enums.TicketStatus;
 
 @Entity
 @Table(name = "tickets")
@@ -28,21 +29,31 @@ public class Ticket {
     @Column(nullable = false)
     private double value;
 
-    @Column(nullable = false)
-    private LocalDate dateEmiter;
+    @Column(name = "date_emission", nullable = false)
+    private LocalDate dateEmitter;
 
-    @Column(nullable = false)
+    @Column(name = "due_date", nullable = false)
     private LocalDate dueDate;
 
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private TicketStatus status;
+
+    @ManyToOne
+    @JoinColumn(name = "pay_master_id", nullable = false)
+    private Client payMaster;
+
+    @Column(nullable = false)
+    private String beneficiary;
 
     public Ticket(TicketDTO ticketDTO) {
         this.id = ticketDTO.getId();
         this.code = ticketDTO.getCode();
         this.value = ticketDTO.getValue();
-        this.dateEmiter = ticketDTO.getDateEmiter();
+        this.dateEmitter = ticketDTO.getDateEmitter();
         this.dueDate = ticketDTO.getDueDate();
         this.status = ticketDTO.getStatus();
+        this.payMaster = ticketDTO.getPayMaster();
+        this.beneficiary = ticketDTO.getBeneficiary();
     }
 }
