@@ -81,10 +81,12 @@
 			<artifactId>reactor-core</artifactId>
 		</dependency>
 
-		<groupId>com.itextpdf</groupId>
+		<dependency>
+			<groupId>com.itextpdf</groupId>
 			<artifactId>itext7-core</artifactId>
-			<version>9.1.0</version>
-		<scope>compile</scope>
+			<version>7.1.18</version>
+			<type>pom</type>
+		</dependency>
 	</dependencies>
 
 	<build>
