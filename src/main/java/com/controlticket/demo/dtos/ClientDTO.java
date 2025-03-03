@@ -14,7 +14,6 @@ public class ClientDTO {
     private Long id;
     private String name;
     private String email;
-    private String password;
     private DocumentType documentType;
     private String document;
     private String phone;
@@ -23,7 +22,6 @@ public class ClientDTO {
         this.id = client.getId();
         this.name = client.getName();
         this.email = client.getEmail();
-        this.password = client.getPassword();
         this.documentType = client.getDocumentType();
         this.document = client.getDocument();
         this.phone = client.getPhone();

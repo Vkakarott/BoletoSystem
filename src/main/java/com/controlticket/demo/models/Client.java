@@ -42,10 +42,6 @@ public class Client {
     @Email
     private String email;
 
-    @NotNull
-    @Size(min = 6)
-    private String password;
-
     @Enumerated(EnumType.STRING)
     private DocumentType documentType;
 

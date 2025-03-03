@@ -30,7 +30,6 @@ public class ClientService {
         Client client = new Client();
         client.setName(clientDTO.getName());
         client.setEmail(clientDTO.getEmail());
-        client.setPassword(clientDTO.getPassword());
         client.setDocumentType(clientDTO.getDocumentType());
         client.setDocument(clientDTO.getDocument());;
         client.setPhone(clientDTO.getPhone());
