@@ -23,6 +23,7 @@ public class ClientControllerTest {
     @Autowired
     private ObjectMapper objectMapper;
 
+    @SuppressWarnings("unused")
     @Autowired
     private ClientRepository clientRepository;
 
