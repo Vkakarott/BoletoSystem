@@ -43,8 +43,9 @@ public class Ticket {
     @JoinColumn(name = "pay_master_id", nullable = false)
     private Client payMaster;
 
-    @Column(nullable = false)
-    private String beneficiary;
+    @ManyToOne
+    @JoinColumn(name = "beneficiary_id", nullable = false)
+    private Institution beneficiary;
 
     public Ticket(TicketDTO ticketDTO) {
         this.id = ticketDTO.getId();
