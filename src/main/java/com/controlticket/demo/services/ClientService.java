@@ -30,8 +30,7 @@ public class ClientService {
         Client client = new Client();
         client.setName(clientDTO.getName());
         client.setEmail(clientDTO.getEmail());
-        client.setDocumentType(clientDTO.getDocumentType());
-        client.setDocument(clientDTO.getDocument());;
+        client.setCpf(clientDTO.getCpf());
         client.setPhone(clientDTO.getPhone());
 
         Client savedClient = clientRepository.save(client);
