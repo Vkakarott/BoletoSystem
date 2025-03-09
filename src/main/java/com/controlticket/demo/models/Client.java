@@ -2,8 +2,6 @@ package com.controlticket.demo.models;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -19,8 +17,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
-
-import com.controlticket.demo.enums.DocumentType;
 
 @Entity
 @Table(name = "clients")
@@ -42,11 +38,8 @@ public class Client {
     @Email
     private String email;
 
-    @Enumerated(EnumType.STRING)
-    private DocumentType documentType;
-
     @NotNull
-    private String document;
+    private String cpf;
 
     @NotNull
     private String phone;
