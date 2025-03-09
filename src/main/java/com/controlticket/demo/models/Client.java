@@ -1,6 +1,7 @@
 package com.controlticket.demo.models;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -34,11 +35,12 @@ public class Client {
     @Size(min = 3, max = 100)
     private String name;
 
-    @NotNull
     @Email
+    @Column(unique = true, nullable = false)
     private String email;
 
     @NotNull
+    @Column(unique = true, nullable = false)
     private String cpf;
 
     @NotNull
