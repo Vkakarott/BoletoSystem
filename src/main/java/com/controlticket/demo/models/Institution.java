@@ -41,6 +41,6 @@ public class Institution {
     @Column(unique = true, nullable = false)
     private String email;
 
-    @ManyToMany(mappedBy = "intituition", cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "beneficiary", cascade = CascadeType.ALL)
     private List<Ticket> tickets;
 }
