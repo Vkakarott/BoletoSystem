@@ -7,6 +7,7 @@ import java.time.LocalDate;
 import com.controlticket.demo.enums.TicketStatus;
 import com.controlticket.demo.models.Ticket;
 import com.controlticket.demo.models.Client;
+import com.controlticket.demo.models.Institution;
 
 @Getter
 @Setter
@@ -21,7 +22,7 @@ public class TicketDTO {
     private LocalDate dueDate;
     private TicketStatus status;
     private Client payMaster;
-    private String beneficiary;
+    private Institution beneficiary;
 
     public TicketDTO(Ticket ticket) {
         this.id = ticket.getId();
